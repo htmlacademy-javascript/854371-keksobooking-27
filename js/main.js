@@ -10,5 +10,7 @@ const getRandomNumber = (minNumber, maxNumber) => {
     minNumber = maxNumber;
     maxNumber = mindNumber;
   }
-  return Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
+  return Math.floor(Math.random() * (maxNumber + 1 - minNumber)) + minNumber;
 };
+
+console.log(getRandomNumber(0, 2));
