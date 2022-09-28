@@ -28,8 +28,8 @@ const getRandomFloatNumber = (minNumber = 0, maxNumber = 0, precisionNumber = 0)
     minNumber = maxNumber;
     maxNumber = mindNumber;
   }
-  const randomNumberStreet = Math.random() * (maxNumber + 1 - minNumber) + minNumber;
-  return Number(randomNumberStreet.toFixed(precisionNumber));
+  const randomNumber = Math.random() * (maxNumber + 1 - minNumber) + minNumber;
+  return Number(randomNumber.toFixed(precisionNumber));
 };
 
 getRandomFloatNumber(0, 2, 2);
