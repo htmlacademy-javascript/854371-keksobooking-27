@@ -34,13 +34,17 @@ const getRandomFloatNumber = (minNumber = 0, maxNumber = 0, precisionNumber = 0)
 
 getRandomFloatNumber(0, 2, 2);
 
-const AVATAR_NAMBERS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'];
+const AVATAR_NUMBERS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'];
 const AD_TITLES = ['Романтика мегаполиса', 'Несущие опоры как арт-объект', 'Симфония стиля', 'Симбиоз авангарда и классики', 'Гармония, построенная на принципах свободы', 'Царство королевы цветов', 'Штучный экземпляр', 'Морские просторы', 'С мечтой об античности', 'Естественное течение жизни', 'Тишина и покой загородной жизни.'];
 const HOUSING_TYPES = ['place', 'flat', 'house', 'bungalow', 'hotel'];
 const REGISTRATION_HOURS = ['12:00', '13:00', '14:00'];
 const PROPERTY_AMENITIES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 const AD_DESCRIPTIONS = ['Раз, два - Фредди заберёт тебя. Три, четыре - закончили упражнение.', 'Редкая собака добежит до середины Кореи.', '"Чуть ланфрен не откусили..." - ёжился Боярский, смутно припоминая подробности бурной ночи.', 'Самый долгий телефонный разговор зафиксирован в Москве, когда Тина Канделаки случайно позвонила Андрею Малахову.', 'Атеист москит не верит в Дракулу.', 'Замужем надо следить за собой, иначе придется следить за мужем.', 'В детстве я боялся темноты. Теперь, видя свои счета за электроэнергию, я боюсь света.', 'Таня помешана на Скайпе. Поэтому она убирает только ту часть комнаты, которая видна на мониторе.', 'В опустевшей лечебнице холод и стук костей; говорят, пропадают дети десяток лет', 'Сила твоя не в том, чтоб меня ломать', 'Его подбирает другой человек и заботится о нём пока главный герой в ответ делает всё чтобы помочь новоиспечённому другу. А в голове лишь один вопрос - как признаться что ты не просто животное'];
 const AD_PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
+const ADDRESS_LAT = getRandomFloatNumber(35.65, 35.70, 5);
+const ADDRESS_LNG = getRandomFloatNumber(139.70, 139.80, 5);
+const LOCATION_LAT = getRandomFloatNumber(35.65, 35.70, 5);
+const LOCATION_LNG = getRandomFloatNumber(139.70, 139.80, 5);
 
 /**
  * Возвращает случайный элемент переданного массива
@@ -54,9 +58,9 @@ const getRandomArrayElement = (array) => array[getRandomNumber(0, array.length -
  * @return {`img/avatars/user${*}.png`}
  */
 const createAvatarSrc = () => {
-  const numberAvatar = getRandomArrayElement(AVATAR_NAMBERS);
-  const indexNumber = AVATAR_NAMBERS.indexOf(numberAvatar);
-  AVATAR_NAMBERS.splice(indexNumber, 1);
+  const numberAvatar = getRandomArrayElement(AVATAR_NUMBERS);
+  const indexNumber = AVATAR_NUMBERS.indexOf(numberAvatar);
+  AVATAR_NUMBERS.splice(indexNumber, 1);
   return `img/avatars/user${numberAvatar}.png`;
 };
 
@@ -65,13 +69,15 @@ const createAvatarSrc = () => {
  * @return {*[]}
  */
 const createArrayPropertyAmenities = () => {
-  const copyPropertyAmenities = PROPERTY_AMENITIES;
   const propertyAmenities = [];
-  for (let i = 0; i < getRandomNumber(1, copyPropertyAmenities.length); i++) {
-    const property = getRandomArrayElement(copyPropertyAmenities);
+  let counter = 0;
+  while (counter <= getRandomNumber(1, PROPERTY_AMENITIES.length - 1)) {
+    const copyPropertyAmenities = PROPERTY_AMENITIES.slice(0);
+    const property = copyPropertyAmenities[counter];
     propertyAmenities.push(property);
     const indexProperty = copyPropertyAmenities.indexOf(property);
     copyPropertyAmenities.splice(indexProperty, 1);
+    counter++;
   }
   return propertyAmenities;
 };
@@ -98,7 +104,7 @@ const createAdvertisement = () => ({
   },
   'offer': {
     'title': getRandomArrayElement(AD_TITLES),
-    'address': `${getRandomFloatNumber(35.65, 35.70, 5)}, ${getRandomFloatNumber(139.70, 139.80, 5)}`,
+    'address': `${ADDRESS_LAT}, ${ADDRESS_LNG}`,
     'price': getRandomNumber(10, 100) * 100,
     'type': getRandomArrayElement(HOUSING_TYPES),
     'rooms': getRandomNumber(1, 10),
@@ -110,8 +116,8 @@ const createAdvertisement = () => ({
     'photos': createArrayPhotos(),
   },
   'location': {
-    'lat': getRandomFloatNumber(35.65, 35.70, 5),
-    'lng': getRandomFloatNumber(139.70, 139.80, 5),
+    'lat': LOCATION_LAT,
+    'lng': LOCATION_LNG,
   },
 });
 
