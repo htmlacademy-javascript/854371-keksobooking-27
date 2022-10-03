@@ -69,6 +69,10 @@ const createAdvertisement = () => ({
   },
 });
 
+/**
+ * Создает 10 минимых объявлений об аренде жилья
+ * @return {{offer: {features: *[], rooms: number, address: string, checkin: *, price, guests: number, description: *, title: *, type: *, checkout: *, photos: *[]}, author: {avatar: `img/avatars/user${*}.png`}, location: {lng: number, lat: number}}[]}
+ */
 const generateData = () => Array.from({length: 10}, createAdvertisement);
 
 export {generateData};
