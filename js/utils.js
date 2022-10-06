@@ -38,4 +38,18 @@ const getRandomFloatNumber = (minNumber = 0, maxNumber = 0, precisionNumber = 0)
  */
 const getRandomArrayElement = (array) => array[getRandomNumber(0, array.length - 1)];
 
-export {getRandomNumber, getRandomFloatNumber, getRandomArrayElement};
+/**
+ * Сопостовляет слово с ключами объекта и возвращает значение совпавшего ключа
+ * @param listTranslatedWords {Array.<Object>} перебираемый объект
+ * @param word {string} слово
+ * @return {Object.key}
+ */
+const translateWord = (listTranslatedWords, word) => {
+  for(const notTranslateWord in listTranslatedWords) {
+    if (notTranslateWord === word) {
+      return listTranslatedWords[word];
+    }
+  }
+};
+
+export {getRandomNumber, getRandomFloatNumber, getRandomArrayElement, translateWord};
