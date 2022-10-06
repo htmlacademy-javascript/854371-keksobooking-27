@@ -19,9 +19,10 @@ const createAvatarSrc = () => {
 const createArrayPropertyAmenities = () => {
   const propertyAmenities = [];
   let counter = 0;
-  while (counter <= getRandomNumber(1, PROPERTY_AMENITIES.length - 1)) {
-    const copyPropertyAmenities = PROPERTY_AMENITIES.slice(0);
-    const property = copyPropertyAmenities[counter];
+  const numberProperties = getRandomNumber(1, PROPERTY_AMENITIES.length - 1);
+  const copyPropertyAmenities = PROPERTY_AMENITIES.slice();
+  while (counter <= numberProperties) {
+    const property = getRandomArrayElement(copyPropertyAmenities);
     propertyAmenities.push(property);
     const indexProperty = copyPropertyAmenities.indexOf(property);
     copyPropertyAmenities.splice(indexProperty, 1);
