@@ -61,7 +61,7 @@ const translateWord = (listTranslatedWords, word) => {
  * @return {string}
  */
 const editTemplate = (classSearched, isProperty, templateElement, textContent) => {
-  let finalActionMarkup = '';
+  let finalActionMarkup;
   if (isProperty) {
     finalActionMarkup = `${templateElement.querySelector(`.${classSearched}`).textContent = textContent}`;
   } else {
