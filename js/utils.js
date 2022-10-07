@@ -52,4 +52,22 @@ const translateWord = (listTranslatedWords, word) => {
   }
 };
 
-export {getRandomNumber, getRandomFloatNumber, getRandomArrayElement, translateWord};
+/**
+ * Функция проверяет, не пустое ли свойство isProperty, и в завсимости от этого возращает нужное действие с шаблоном
+ * @param classSearched {string} искомый класс в шаблоне
+ * @param isProperty {string|number} проверяемое свойство
+ * @param templateElement {Node} сам шаблон
+ * @param textContent {string} текстовый ухел который будет подставляться если свойство не пустое
+ * @return {string}
+ */
+const editTemplate = (classSearched, isProperty, templateElement, textContent) => {
+  let finalActionMarkup = '';
+  if (isProperty) {
+    finalActionMarkup = `${templateElement.querySelector(`.${classSearched}`).textContent = textContent}`;
+  } else {
+    finalActionMarkup = `${templateElement.querySelector(`.${classSearched}`).style.display = 'none'}`;
+  }
+  return finalActionMarkup;
+};
+
+export {getRandomNumber, getRandomFloatNumber, getRandomArrayElement, translateWord, editTemplate};
