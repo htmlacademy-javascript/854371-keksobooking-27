@@ -1,3 +1,2 @@
-import {generateData} from './generate-data.js';
+import './create-ads.js';
 
-generateData();

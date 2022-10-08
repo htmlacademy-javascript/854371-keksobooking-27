@@ -38,4 +38,36 @@ const getRandomFloatNumber = (minNumber = 0, maxNumber = 0, precisionNumber = 0)
  */
 const getRandomArrayElement = (array) => array[getRandomNumber(0, array.length - 1)];
 
-export {getRandomNumber, getRandomFloatNumber, getRandomArrayElement};
+/**
+ * Сопостовляет слово с ключами объекта и возвращает значение совпавшего ключа
+ * @param listTranslatedWords {Object} перебираемый объект
+ * @param word {string} слово
+ * @return {string} значение по совпавшему ключу
+ */
+const translateWord = (listTranslatedWords, word) => {
+  for(const notTranslateWord in listTranslatedWords) {
+    if (notTranslateWord === word) {
+      return listTranslatedWords[word];
+    }
+  }
+};
+
+/**
+ * Функция проверяет, не пустое ли свойство isProperty, и в завсимости от этого возращает нужное действие с шаблоном
+ * @param classSearched {string} искомый класс в шаблоне
+ * @param isProperty {string|number} проверяемое свойство
+ * @param templateElement {Node} сам шаблон
+ * @param textContent {string} текстовый ухел который будет подставляться если свойство не пустое
+ * @return {string}
+ */
+const editTemplate = (classSearched, isProperty, templateElement, textContent) => {
+  let finalActionMarkup;
+  if (isProperty) {
+    finalActionMarkup = `${templateElement.querySelector(`.${classSearched}`).textContent = textContent}`;
+  } else {
+    finalActionMarkup = `${templateElement.querySelector(`.${classSearched}`).style.display = 'none'}`;
+  }
+  return finalActionMarkup;
+};
+
+export {getRandomNumber, getRandomFloatNumber, getRandomArrayElement, translateWord, editTemplate};
