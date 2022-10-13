@@ -20,8 +20,17 @@ const minPrice = {
   palace: 10000,
 };
 
+/**
+ * Функция для валидации цены
+ * @param value значение поля с ценой
+ * @return {boolean} если поле невалидно, вернет false
+ */
 const validatePrice = (value) => value >= minPrice[kindType.value];
 
+/**
+ * Функция для генерации сообщения, которое будет выведено пользователю, на случай если validatePrice вернет false
+ * @return {string}
+ */
 const getPriceErrorMessage = () => `Цена за ${kindType.options[kindType.selectedIndex].text} должна быть не меньше ${minPrice[kindType.value]} &#8381;`;
 
 function onPriceChange() {
