@@ -42,6 +42,11 @@ pristine.addValidator(price, validatePrice, getPriceErrorMessage);
 const roomNumber = adForm.querySelector('#room_number');
 const capacity = adForm.querySelector('#capacity');
 
+/**
+ * Валидирует колличество комнат, возвращает false если колличество не соответствует требованиям
+ * @param value колличество комнат выбранное в select
+ * @return {boolean}
+ */
 const validateRoomNumber = (value) => {
   if (value > 3 && +capacity.value !== 0) {
     return false;
@@ -49,19 +54,24 @@ const validateRoomNumber = (value) => {
   return value >= capacity.value;
 };
 
+/**
+ * Генерирует сообщение для пользователя, если валидация колличество комнат вернула false
+ * @param value колличество комнат выбранное в select
+ * @return {string} сообщение для пользователя
+ */
 const getRoomNumberErrorMessage = (value) => {
   if (value > 3) {
-    return 'Больше трех комнат только не для гостей';
+    return 'Больше трех комнат точно не для гостей';
   }
   return `${capacity.options[capacity.selectedIndex].text} должно быть доступно минимум ${roomNumber.options[(capacity.value - 1)].text}`;
 };
 
-const validateCapacity = (value) => {
-  // TODO Если равно нулю и кооличество комнат меньше трёх => 'Для не гостей должно быть больше 3-х комнат'
-  if (value === 0 && +roomNumber.value < 3) {
-    return true;
-  }
-};
+/**
+ * Валидирует колличество мест, возвращает false если колличество не соответствует требованиям
+ * @param value колличество мест выбранное в select
+ * @return {boolean}
+ */
+const validateCapacity = (value) => !(value === '0' && +roomNumber.value < 3);
 
 const onRoomNumberChange = () => {
   pristine.validate(capacity);
