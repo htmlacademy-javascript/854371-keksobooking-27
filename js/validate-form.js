@@ -9,9 +9,7 @@ const pristineConfig = {
 
 const pristine = new Pristine(adForm, pristineConfig);
 const kindType = adForm.querySelector('#type');
-
 const price = adForm.querySelector('#price');
-
 const minPrice = {
   bungalow: 0,
   flat: 1000,
@@ -39,8 +37,46 @@ function onPriceChange() {
 }
 
 kindType.addEventListener('change', onPriceChange);
-
 pristine.addValidator(price, validatePrice, getPriceErrorMessage);
+
+const roomNumber = adForm.querySelector('#room_number');
+const capacity = adForm.querySelector('#capacity');
+
+const validateRoomNumber = (value) => {
+  if (value > 3 && +capacity.value !== 0) {
+    return false;
+  }
+  return value >= capacity.value;
+};
+
+const getRoomNumberErrorMessage = (value) => {
+  if (value > 3) {
+    return 'Больше трех комнат только не для гостей';
+  }
+  return `${capacity.options[capacity.selectedIndex].text} должно быть доступно минимум ${roomNumber.options[(capacity.value - 1)].text}`;
+};
+
+const validateCapacity = (value) => {
+  // TODO Если равно нулю и кооличество комнат меньше трёх => 'Для не гостей должно быть больше 3-х комнат'
+  if (value === 0 && +roomNumber.value < 3) {
+    return true;
+  }
+};
+
+const onRoomNumberChange = () => {
+  pristine.validate(capacity);
+  pristine.validate(roomNumber);
+};
+
+const onCapacityChange = () => {
+  pristine.validate(roomNumber);
+  pristine.validate(capacity);
+};
+
+roomNumber.addEventListener('change', onRoomNumberChange);
+capacity.addEventListener('change', onCapacityChange);
+pristine.addValidator(roomNumber, validateRoomNumber, getRoomNumberErrorMessage);
+pristine.addValidator(capacity, validateCapacity, 'Для не гостей должно быть больше 3-х комнат');
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
