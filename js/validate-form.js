@@ -1,15 +1,6 @@
 import {adForm} from './form.js';
+import {MAXIMUM_GUEST_ROOMS, VALUE_OPTION_NOT_FOR_GUESTS} from './contants.js';
 
-const pristineConfig = {
-  classTo: 'ad-form__element',
-  errorClass: 'ad-form__element--invalid',
-  errorTextParent: 'ad-form__element',
-  errorTextClass: 'text-help',
-};
-
-const pristine = new Pristine(adForm, pristineConfig);
-const kindType = adForm.querySelector('#type');
-const price = adForm.querySelector('#price');
 const minPrice = {
   bungalow: 0,
   flat: 1000,
@@ -17,6 +8,16 @@ const minPrice = {
   house: 5000,
   palace: 10000,
 };
+
+const pristineConfig = {
+  classTo: 'ad-form__element',
+  errorClass: 'ad-form__element--invalid',
+  errorTextParent: 'ad-form__element',
+  errorTextClass: 'text-help',
+};
+const pristine = new Pristine(adForm, pristineConfig);
+const kindType = adForm.querySelector('#type');
+const price = adForm.querySelector('#price');
 
 /**
  * Функция для валидации цены
@@ -74,8 +75,8 @@ const getRoomNumberErrorMessage = (value) => {
 const validateCapacity = (value) => !(+value === VALUE_OPTION_NOT_FOR_GUESTS && +roomNumber.value < MAXIMUM_GUEST_ROOMS);
 
 const onRoomNumberChange = () => {
-  pristine.validate(capacity);
   pristine.validate(roomNumber);
+  pristine.validate(capacity);
 };
 
 const onCapacityChange = () => {
