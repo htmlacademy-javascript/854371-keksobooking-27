@@ -18,6 +18,8 @@ const ADDRESS_LAT = getRandomFloatNumber(35.65, 35.70, 5);
 const ADDRESS_LNG = getRandomFloatNumber(139.70, 139.80, 5);
 const LOCATION_LAT = getRandomFloatNumber(35.65, 35.70, 5);
 const LOCATION_LNG = getRandomFloatNumber(139.70, 139.80, 5);
+const MAXIMUM_GUEST_ROOMS = 3;
+const VALUE_OPTION_NOT_FOR_GUESTS = 0;
 
 export {
   AVATAR_NUMBERS,
@@ -32,4 +34,6 @@ export {
   ADDRESS_LNG,
   LOCATION_LAT,
   LOCATION_LNG,
+  MAXIMUM_GUEST_ROOMS,
+  VALUE_OPTION_NOT_FOR_GUESTS,
 };

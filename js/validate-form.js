@@ -48,7 +48,7 @@ const capacity = adForm.querySelector('#capacity');
  * @return {boolean}
  */
 const validateRoomNumber = (value) => {
-  if (value > 3 && +capacity.value !== 0) {
+  if (value > MAXIMUM_GUEST_ROOMS && +capacity.value !== VALUE_OPTION_NOT_FOR_GUESTS) {
     return false;
   }
   return value >= capacity.value;
@@ -60,7 +60,7 @@ const validateRoomNumber = (value) => {
  * @return {string} сообщение для пользователя
  */
 const getRoomNumberErrorMessage = (value) => {
-  if (value > 3) {
+  if (value > MAXIMUM_GUEST_ROOMS) {
     return 'Больше трех комнат точно не для гостей';
   }
   return `${capacity.options[capacity.selectedIndex].text} должно быть доступно минимум ${roomNumber.options[(capacity.value - 1)].text}`;
@@ -71,7 +71,7 @@ const getRoomNumberErrorMessage = (value) => {
  * @param value колличество мест выбранное в select
  * @return {boolean}
  */
-const validateCapacity = (value) => !(value === '0' && +roomNumber.value < 3);
+const validateCapacity = (value) => !(+value === VALUE_OPTION_NOT_FOR_GUESTS && +roomNumber.value < MAXIMUM_GUEST_ROOMS);
 
 const onRoomNumberChange = () => {
   pristine.validate(capacity);
