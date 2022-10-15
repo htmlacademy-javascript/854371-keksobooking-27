@@ -34,6 +34,7 @@ const getPriceErrorMessage = () => `Цена за ${kindType.options[kindType.se
 
 function onPriceChange() {
   price.placeholder = minPrice[this.value];
+  price.min = minPrice[this.value];
   pristine.validate(price);
 }
 
