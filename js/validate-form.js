@@ -1,19 +1,19 @@
 import {adForm} from './form.js';
-import {MAXIMUM_GUEST_ROOMS, VALUE_OPTION_NOT_FOR_GUESTS} from './contants.js';
+import {MAXIMUM_GUEST_ROOMS, VALUE_OPTION_NOT_FOR_GUESTS, REGISTRATION_HOURS} from './contants.js';
 
 const minPrice = {
   bungalow: 0,
   flat: 1000,
   hotel: 3000,
   house: 5000,
-  palace: 10000,
+  palace: 10000
 };
 
 const pristineConfig = {
   classTo: 'ad-form__element',
   errorClass: 'ad-form__element--invalid',
   errorTextParent: 'ad-form__element',
-  errorTextClass: 'text-help',
+  errorTextClass: 'text-help'
 };
 const pristine = new Pristine(adForm, pristineConfig);
 const kindType = adForm.querySelector('#type');
@@ -34,6 +34,7 @@ const getPriceErrorMessage = () => `Цена за ${kindType.options[kindType.se
 
 function onPriceChange() {
   price.placeholder = minPrice[this.value];
+  price.min = minPrice[this.value];
   pristine.validate(price);
 }
 
@@ -88,6 +89,41 @@ roomNumber.addEventListener('change', onRoomNumberChange);
 capacity.addEventListener('change', onCapacityChange);
 pristine.addValidator(roomNumber, validateRoomNumber, getRoomNumberErrorMessage);
 pristine.addValidator(capacity, validateCapacity, 'Для не гостей должно быть больше 3-х комнат');
+
+const formElementTime = adForm.querySelector('.ad-form__element--time');
+const timeIn = adForm.querySelector('#timein');
+const timeOut = adForm.querySelector('#timeout');
+const updateTimeInOut = (evt) => {
+  const element = evt.target;
+  if (element.id === 'timein') {
+    switch (element.value) {
+      case REGISTRATION_HOURS[0]:
+        timeOut.value = REGISTRATION_HOURS[0];
+        break;
+      case REGISTRATION_HOURS[1]:
+        timeOut.value = REGISTRATION_HOURS[1];
+        break;
+      case REGISTRATION_HOURS[2]:
+        timeOut.value = REGISTRATION_HOURS[2];
+        break;
+    }
+  }
+  if (element.id === 'timeout') {
+    switch (element.value) {
+      case REGISTRATION_HOURS[0]:
+        timeIn.value = REGISTRATION_HOURS[0];
+        break;
+      case REGISTRATION_HOURS[1]:
+        timeIn.value = REGISTRATION_HOURS[1];
+        break;
+      case REGISTRATION_HOURS[2]:
+        timeIn.value = REGISTRATION_HOURS[2];
+        break;
+    }
+  }
+};
+
+formElementTime.addEventListener('change', updateTimeInOut);
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
