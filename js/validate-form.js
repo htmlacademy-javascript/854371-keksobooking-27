@@ -90,6 +90,7 @@ capacity.addEventListener('change', onCapacityChange);
 pristine.addValidator(roomNumber, validateRoomNumber, getRoomNumberErrorMessage);
 pristine.addValidator(capacity, validateCapacity, 'Для не гостей должно быть больше 3-х комнат');
 
+const formElementTime = adForm.querySelector('.ad-form__element--time');
 const timeIn = adForm.querySelector('#timein');
 const timeOut = adForm.querySelector('#timeout');
 const updateTimeInOut = (evt) => {
@@ -122,8 +123,7 @@ const updateTimeInOut = (evt) => {
   }
 };
 
-timeIn.addEventListener('change', updateTimeInOut);
-timeOut.addEventListener('change', updateTimeInOut);
+formElementTime.addEventListener('change', updateTimeInOut);
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
