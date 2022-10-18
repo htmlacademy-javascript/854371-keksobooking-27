@@ -45,7 +45,7 @@ const getRandomArrayElement = (array) => array[getRandomNumber(0, array.length -
  * @return {string} значение по совпавшему ключу
  */
 const translateWord = (listTranslatedWords, word) => {
-  for(const notTranslateWord in listTranslatedWords) {
+  for (const notTranslateWord in listTranslatedWords) {
     if (notTranslateWord === word) {
       return listTranslatedWords[word];
     }
@@ -70,4 +70,10 @@ const editTemplate = (classSearched, isProperty, templateElement, textContent) =
   return finalActionMarkup;
 };
 
-export {getRandomNumber, getRandomFloatNumber, getRandomArrayElement, translateWord, editTemplate};
+export {
+  getRandomNumber,
+  getRandomFloatNumber,
+  getRandomArrayElement,
+  translateWord,
+  editTemplate
+};

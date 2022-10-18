@@ -1,5 +1,9 @@
 import {adForm} from './form.js';
-import {MAXIMUM_GUEST_ROOMS, VALUE_OPTION_NOT_FOR_GUESTS, REGISTRATION_HOURS} from './contants.js';
+import {
+  MAXIMUM_GUEST_ROOMS,
+  VALUE_OPTION_NOT_FOR_GUESTS,
+  REGISTRATION_HOURS
+} from './contants.js';
 
 const minPrice = {
   bungalow: 0,
