@@ -2,12 +2,13 @@ import {
   putFormActiveState,
   address
 } from './form.js';
+import {adsData} from './create-ads.js';
 
 const map = L.map('map-canvas')
   .on('load', () => {
     putFormActiveState();
   })
-  .setView([35.42, 139.36], 13);
+  .setView([35.682, 139.753], 8.2);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
@@ -22,8 +23,8 @@ const mainMarkerIcon = L.icon({
 
 const mainPinMarker = L.marker(
   {
-    lat: 35.42,
-    lng: 139.36
+    lat: 35.682,
+    lng: 139.753
   },
   {
     draggable: true,
@@ -38,3 +39,28 @@ mainPinMarker.on('moveend', (evt) => {
   address.value = `${latLng.lat.toFixed(5)}, ${latLng.lng.toFixed(5)}`;
 });
 
+const icon = L.icon({
+  iconUrl: 'img/pin.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
+const mainMarkerGroup = L.layerGroup().addTo(map);
+
+const createMarker = (point) => {
+  const {location: {lat, lng}} = point;
+  const marker = L.marker(
+    {
+      lat,
+      lng,
+    },
+    {
+      icon,
+    },
+  );
+  marker.addTo(mainMarkerGroup);
+};
+
+adsData.forEach((point) => {
+  createMarker(point);
+});

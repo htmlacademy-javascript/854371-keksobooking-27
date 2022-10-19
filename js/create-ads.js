@@ -54,3 +54,5 @@ adsData.forEach(({
   }
   adsFragment.appendChild(adCard);
 });
+
+export {adsData};
