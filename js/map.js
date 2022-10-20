@@ -1,8 +1,8 @@
+import {adsData} from './create-ads.js';
 import {
   putFormActiveState,
   address
 } from './form.js';
-import {adsData} from './create-ads.js';
 
 const map = L.map('map-canvas')
   .on('load', () => {
@@ -16,7 +16,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 const mainMarkerIcon = L.icon({
-  iconUrl: 'img/main-pin.svg',
+  iconUrl: './img/main-pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52]
 });
@@ -39,28 +39,29 @@ mainPinMarker.on('moveend', (evt) => {
   address.value = `${latLng.lat.toFixed(5)}, ${latLng.lng.toFixed(5)}`;
 });
 
-const icon = L.icon({
-  iconUrl: 'img/pin.svg',
+const pinIcon = L.icon({
+  iconUrl: './img/pin.svg',
   iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  iconAnchor: [20, 40]
 });
 
-const mainMarkerGroup = L.layerGroup().addTo(map);
+const layerGroup = L.layerGroup().addTo(map);
 
-const createMarker = (point) => {
+const createPoints = (point) => {
   const {location: {lat, lng}} = point;
-  const marker = L.marker(
+  const adsMarker = L.marker(
     {
-      lat,
-      lng,
+      lat: lat,
+      lng: lng,
     },
     {
-      icon,
-    },
+      draggable: true,
+      icon: pinIcon,
+    }
   );
-  marker.addTo(mainMarkerGroup);
+  adsMarker.addTo(layerGroup);
 };
 
-adsData.forEach((point) => {
-  createMarker(point);
+adsData.forEach((adData) => {
+  createPoints(adData);
 });
