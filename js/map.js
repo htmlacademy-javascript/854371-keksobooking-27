@@ -1,4 +1,7 @@
-import {adsData} from './create-ads.js';
+import {
+  adsData,
+  adsFragment
+} from './create-ads.js';
 import {
   putFormActiveState,
   address
@@ -8,7 +11,7 @@ const map = L.map('map-canvas')
   .on('load', () => {
     putFormActiveState();
   })
-  .setView([35.682, 139.753], 8.2);
+  .setView([35.682, 139.753], 8.5);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
@@ -47,21 +50,22 @@ const pinIcon = L.icon({
 
 const layerGroup = L.layerGroup().addTo(map);
 
-const createPoints = (point) => {
+const createPoints = (point, index) => {
   const {location: {lat, lng}} = point;
   const adsMarker = L.marker(
     {
-      lat: lat,
-      lng: lng,
+      lat,
+      lng
     },
     {
-      draggable: true,
-      icon: pinIcon,
+      icon: pinIcon
     }
   );
-  adsMarker.addTo(layerGroup);
+  adsMarker
+    .addTo(layerGroup)
+    .bindPopup(adsFragment.children[index]);
 };
 
-adsData.forEach((adData) => {
-  createPoints(adData);
+adsData.forEach((adData, index) => {
+  createPoints(adData, index);
 });

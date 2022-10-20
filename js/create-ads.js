@@ -1,6 +1,9 @@
 import {generateData} from './generate-data.js';
 import {HOUSING_TYPES_TRANSLATE} from './contants.js';
-import {translateWord, editTemplate} from './utils.js';
+import {
+  translateWord,
+  editTemplate
+} from './utils.js';
 
 const adsData = generateData();
 const adsFragment = document.createDocumentFragment();
@@ -55,4 +58,7 @@ adsData.forEach(({
   adsFragment.appendChild(adCard);
 });
 
-export {adsData};
+export {
+  adsData,
+  adsFragment
+};
