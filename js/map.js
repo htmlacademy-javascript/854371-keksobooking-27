@@ -6,10 +6,12 @@ import {
   putFormActiveState,
   address
 } from './form.js';
+import {adFormSlider} from './slider-for-form.js';
 
 const map = L.map('map-canvas')
   .on('load', () => {
     putFormActiveState();
+    adFormSlider.removeAttribute('disabled');
   })
   .setView([35.682, 139.753], 8.5);
 

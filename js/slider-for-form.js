@@ -47,4 +47,6 @@ const onKindTypeChange = () => {
 
 kindType.addEventListener('change', onKindTypeChange);
 
+adFormSlider.setAttribute('disabled', 'true');
 
+export {adFormSlider};
