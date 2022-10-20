@@ -16,8 +16,6 @@ const AD_DESCRIPTIONS = ['Раз, два - Фредди заберёт тебя.
 const AD_PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 const ADDRESS_LAT = getRandomFloatNumber(35.65, 35.70, 5);
 const ADDRESS_LNG = getRandomFloatNumber(139.70, 139.80, 5);
-const LOCATION_LAT = getRandomFloatNumber(35.65, 35.70, 5);
-const LOCATION_LNG = getRandomFloatNumber(139.70, 139.80, 5);
 const MAXIMUM_GUEST_ROOMS = 3;
 const VALUE_OPTION_NOT_FOR_GUESTS = 0;
 
@@ -32,8 +30,6 @@ export {
   AD_PHOTOS,
   ADDRESS_LAT,
   ADDRESS_LNG,
-  LOCATION_LAT,
-  LOCATION_LNG,
   MAXIMUM_GUEST_ROOMS,
   VALUE_OPTION_NOT_FOR_GUESTS,
 };
