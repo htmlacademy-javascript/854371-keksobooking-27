@@ -1,11 +1,15 @@
+import {COORDINATES_MAIN_PIN} from './contants.js';
+
 import {
   adsData,
   adsFragment
 } from './create-ads.js';
+
 import {
   putFormActiveState,
   address
 } from './form.js';
+
 import {adFormSlider} from './slider-for-form.js';
 
 const map = L.map('map-canvas')
@@ -13,7 +17,7 @@ const map = L.map('map-canvas')
     putFormActiveState();
     adFormSlider.removeAttribute('disabled');
   })
-  .setView([35.682, 139.753], 8.5);
+  .setView([COORDINATES_MAIN_PIN.lat, COORDINATES_MAIN_PIN.lng], 8.5);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
@@ -28,8 +32,8 @@ const mainMarkerIcon = L.icon({
 
 const mainPinMarker = L.marker(
   {
-    lat: 35.682,
-    lng: 139.753
+    lat: COORDINATES_MAIN_PIN.lat,
+    lng: COORDINATES_MAIN_PIN.lng
   },
   {
     draggable: true,
