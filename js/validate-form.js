@@ -77,7 +77,7 @@ const getRoomNumberErrorMessage = (value) => {
  * @param value колличество мест выбранное в select
  * @return {boolean}
  */
-const validateCapacity = (value) => !(+value === VALUE_OPTION_NOT_FOR_GUESTS && +roomNumber.value < MAXIMUM_GUEST_ROOMS);
+const validateCapacity = (value) => !(+value === VALUE_OPTION_NOT_FOR_GUESTS && +roomNumber.value <= MAXIMUM_GUEST_ROOMS);
 
 const onRoomNumberChange = () => {
   pristine.validate(roomNumber);
