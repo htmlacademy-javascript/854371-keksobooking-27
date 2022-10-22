@@ -1,5 +1,19 @@
-import {getRandomArrayElement, getRandomNumber} from './utils.js';
-import {AVATAR_NUMBERS, AD_TITLES, HOUSING_TYPES, REGISTRATION_HOURS, PROPERTY_AMENITIES, AD_DESCRIPTIONS, AD_PHOTOS, ADDRESS_LAT, ADDRESS_LNG, LOCATION_LAT, LOCATION_LNG} from './contants.js';
+import {
+  getRandomArrayElement,
+  getRandomFloatNumber,
+  getRandomNumber
+} from './utils.js';
+import {
+  AVATAR_NUMBERS,
+  AD_TITLES,
+  HOUSING_TYPES,
+  REGISTRATION_HOURS,
+  PROPERTY_AMENITIES,
+  AD_DESCRIPTIONS,
+  AD_PHOTOS,
+  ADDRESS_LAT,
+  ADDRESS_LNG
+} from './contants.js';
 
 /**
  * Создаёт адрес аватара пользователя
@@ -45,11 +59,13 @@ const createArrayPhotos = () => {
 
 /**
  * Функция конструктор объекта
- * @return {{offer: {features: *[], rooms: number, address: string, checkin: *, price: number, guests: number, description: *, title: *, type: *, checkout: *, photos: *[]}, author: {avatar: `img/avatars/user${*}.png`}, location: {lng: number, lat: number}}}
+ * @return {{offer: {features: *[], rooms: number, address: string, checkin: *, price: number, guests: number,
+ *   description: *, title: *, type: *, checkout: *, photos: *[]}, author: {avatar: `img/avatars/user${*}.png`},
+ *   location: {lng: number, lat: number}}}
  */
 const createAdvertisement = () => ({
   'author': {
-    'avatar': createAvatarSrc(),
+    'avatar': createAvatarSrc()
   },
   'offer': {
     'title': getRandomArrayElement(AD_TITLES),
@@ -62,17 +78,19 @@ const createAdvertisement = () => ({
     'checkout': getRandomArrayElement(REGISTRATION_HOURS),
     'features': createArrayPropertyAmenities(),
     'description': getRandomArrayElement(AD_DESCRIPTIONS),
-    'photos': createArrayPhotos(),
+    'photos': createArrayPhotos()
   },
   'location': {
-    'lat': LOCATION_LAT,
-    'lng': LOCATION_LNG,
-  },
+    'lat': getRandomFloatNumber(35.65, 35.70, 5),
+    'lng': getRandomFloatNumber(139.70, 139.80, 5)
+  }
 });
 
 /**
  * Создает 10 минимых объявлений об аренде жилья
- * @return {{offer: {features: *[], rooms: number, address: string, checkin: *, price, guests: number, description: *, title: *, type: *, checkout: *, photos: *[]}, author: {avatar: `img/avatars/user${*}.png`}, location: {lng: number, lat: number}}[]}
+ * @return {{offer: {features: *[], rooms: number, address: string, checkin: *, price, guests: number, description: *,
+ *   title: *, type: *, checkout: *, photos: *[]}, author: {avatar: `img/avatars/user${*}.png`}, location: {lng:
+ *   number, lat: number}}[]}
  */
 const generateData = () => Array.from({length: 10}, createAdvertisement);
 

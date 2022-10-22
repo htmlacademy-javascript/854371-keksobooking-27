@@ -1,6 +1,9 @@
 import {generateData} from './generate-data.js';
 import {HOUSING_TYPES_TRANSLATE} from './contants.js';
-import {translateWord, editTemplate} from './utils.js';
+import {
+  translateWord,
+  editTemplate
+} from './utils.js';
 
 const adsData = generateData();
 const adsFragment = document.createDocumentFragment();
@@ -9,7 +12,7 @@ const adCardTemplate = document.querySelector('#card').content.querySelector('.p
 adsData.forEach(({
   offer: {title, address, price, type, rooms, guests, checkin, checkout, features, description, photos},
   author: {avatar}
-}, index) => {
+}) => {
   const adCard = adCardTemplate.cloneNode(true);
   editTemplate('popup__title', title, adCard, title);
   editTemplate('popup__text--address', address, adCard, address);
@@ -53,8 +56,9 @@ adsData.forEach(({
     adCard.querySelector('.popup__avatar').style.display = 'none';
   }
   adsFragment.appendChild(adCard);
-  if (index === 0) {
-    const map = document.querySelector('#map-canvas');
-    map.append(adsFragment);
-  }
 });
+
+export {
+  adsData,
+  adsFragment
+};

@@ -3,6 +3,7 @@ const adForm = document.querySelector('.ad-form');
 const adFormInteractiveElements = adForm.querySelectorAll('fieldset');
 const mapFilters = document.querySelector('.map__filters');
 const mapFiltersInteractiveElements = document.querySelectorAll('.map__filters > *');
+const address = adForm.querySelector('#address');
 
 /**
  * Переводит форму и фильтры в НЕактивное состояние
@@ -37,6 +38,8 @@ const putFormActiveState = () => {
   });
 };
 
-putFormActiveState();
-
-export {adForm};
+export {
+  adForm,
+  putFormActiveState,
+  address
+};

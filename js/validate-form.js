@@ -1,5 +1,9 @@
 import {adForm} from './form.js';
-import {MAXIMUM_GUEST_ROOMS, VALUE_OPTION_NOT_FOR_GUESTS, REGISTRATION_HOURS} from './contants.js';
+import {
+  MAXIMUM_GUEST_ROOMS,
+  VALUE_OPTION_NOT_FOR_GUESTS,
+  REGISTRATION_HOURS
+} from './contants.js';
 
 const minPrice = {
   bungalow: 0,
@@ -73,7 +77,7 @@ const getRoomNumberErrorMessage = (value) => {
  * @param value колличество мест выбранное в select
  * @return {boolean}
  */
-const validateCapacity = (value) => !(+value === VALUE_OPTION_NOT_FOR_GUESTS && +roomNumber.value < MAXIMUM_GUEST_ROOMS);
+const validateCapacity = (value) => !(+value === VALUE_OPTION_NOT_FOR_GUESTS && +roomNumber.value <= MAXIMUM_GUEST_ROOMS);
 
 const onRoomNumberChange = () => {
   pristine.validate(roomNumber);
@@ -129,3 +133,9 @@ adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   pristine.validate();
 });
+
+export {
+  price,
+  kindType,
+  minPrice
+};
