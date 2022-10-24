@@ -70,10 +70,19 @@ const editTemplate = (classSearched, isProperty, templateElement, textContent) =
   return finalActionMarkup;
 };
 
+const showAlert = (massage) => {
+  const showAlertTemplate = document.querySelector('#alert-danger').content.querySelector('.alert-danger').cloneNode(true);
+  const showAlertText = showAlertTemplate.querySelector('.alert-danger__description');
+  showAlertText.textContent = massage;
+  document.body.insertAdjacentElement('beforeend', showAlertTemplate);
+  setTimeout(() => {showAlertTemplate.remove();}, 5000);
+};
+
 export {
   getRandomNumber,
   getRandomFloatNumber,
   getRandomArrayElement,
   translateWord,
-  editTemplate
+  editTemplate,
+  showAlert
 };
