@@ -7,7 +7,8 @@ import {
 
 import {
   putFormActiveState,
-  address
+  address,
+  putFiltersActiveState
 } from './form.js';
 
 import {adFormSlider} from './slider-for-form.js';
@@ -81,4 +82,5 @@ getData((ads) => {
   ads.forEach((adData, index) => {
     createPoints(adData, index);
   });
+  putFiltersActiveState();
 });

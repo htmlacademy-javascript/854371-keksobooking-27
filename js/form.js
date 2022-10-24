@@ -32,6 +32,9 @@ const putFormActiveState = () => {
   adFormInteractiveElements.forEach((groupInteractiveElements) => {
     groupInteractiveElements.disabled = false;
   });
+};
+
+const putFiltersActiveState = () => {
   mapFilters.classList.remove('ad-form--disabled');
   mapFiltersInteractiveElements.forEach((mapFiltersInteractiveElement) => {
     mapFiltersInteractiveElement.disabled = false;
@@ -41,5 +44,6 @@ const putFormActiveState = () => {
 export {
   adForm,
   putFormActiveState,
+  putFiltersActiveState,
   address
 };
