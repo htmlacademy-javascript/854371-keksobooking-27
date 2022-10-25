@@ -52,10 +52,6 @@ const onSuccess = () => {
   resetForm();
 };
 
-setTimeout(() => {
-  onSuccess();
-}, 7000);
-
 const onFail = () => {
   submitButtonForm.disabled = false;
   submitButtonForm.textContent = 'Опубликовать';
