@@ -42,6 +42,8 @@ const mainPinMarker = L.marker(
   }
 );
 
+address.value = `${COORDINATES_MAIN_PIN.lat}, ${COORDINATES_MAIN_PIN.lng}`;
+
 mainPinMarker.addTo(map);
 
 mainPinMarker.on('moveend', (evt) => {
@@ -78,9 +80,20 @@ const createPoints = (point, index) => {
     .bindPopup(adsFragment.children[index]);
 };
 
+const resetMap = () => {
+  mainPinMarker.setLatLng({
+    lat: COORDINATES_MAIN_PIN.lat,
+    lng: COORDINATES_MAIN_PIN.lng,
+  });
+  map.closePopup();
+  map.setView([COORDINATES_MAIN_PIN.lat, COORDINATES_MAIN_PIN.lng], 13);
+};
+
 getData((ads) => {
   ads.forEach((adData, index) => {
     createPoints(adData, index);
   });
   putFiltersActiveState();
 });
+
+export {resetMap};

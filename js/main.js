@@ -4,3 +4,4 @@ import './validate-form.js';
 import './map.js';
 import './slider-for-form.js';
 import './api.js';
+import './working-with-form.js';
