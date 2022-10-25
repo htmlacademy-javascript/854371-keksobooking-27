@@ -78,11 +78,14 @@ const showAlert = (massage) => {
   setTimeout(() => {showAlertTemplate.remove();}, 5000);
 };
 
+const isEscape = (evt) => evt.key === 'Escape';
+
 export {
   getRandomNumber,
   getRandomFloatNumber,
   getRandomArrayElement,
   translateWord,
   editTemplate,
-  showAlert
+  showAlert,
+  isEscape
 };

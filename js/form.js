@@ -4,6 +4,7 @@ const adFormInteractiveElements = adForm.querySelectorAll('fieldset');
 const mapFilters = document.querySelector('.map__filters');
 const mapFiltersInteractiveElements = document.querySelectorAll('.map__filters > *');
 const address = adForm.querySelector('#address');
+const submitButtonForm = adForm.querySelector('.ad-form__submit');
 
 /**
  * Переводит форму и фильтры в НЕактивное состояние
@@ -45,5 +46,7 @@ export {
   adForm,
   putFormActiveState,
   putFiltersActiveState,
-  address
+  address,
+  submitButtonForm,
+  mapFilters
 };
