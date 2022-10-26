@@ -13,7 +13,9 @@ const COORDINATES_MAIN_PIN = {
   lat: 35.682,
   lng: 139.753
 };
-
+const DATA_RECEIVING_ADDRESS = 'https://27.javascript.pages.academy/keksobooking/data';
+const DATA_SENDING_ADDRESS = 'https://27.javascript.pages.academy/keksobooking';
+const POP_UP_CLOSING_TIME = 5000;
 
 export {
   HOUSING_TYPES_TRANSLATE,
@@ -21,5 +23,8 @@ export {
   MAXIMUM_GUEST_ROOMS,
   VALUE_OPTION_NOT_FOR_GUESTS,
   MAX_PRICE_INPUT_VALUE,
-  COORDINATES_MAIN_PIN
+  COORDINATES_MAIN_PIN,
+  DATA_RECEIVING_ADDRESS,
+  DATA_SENDING_ADDRESS,
+  POP_UP_CLOSING_TIME
 };

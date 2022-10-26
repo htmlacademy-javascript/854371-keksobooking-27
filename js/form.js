@@ -26,7 +26,7 @@ const putFormInactiveState = () => {
 putFormInactiveState();
 
 /**
- * Переводит форму и фильтры в Активное состояние
+ * Переводит форму в Активное состояние
  */
 const putFormActiveState = () => {
   isFormActive = true;
@@ -36,6 +36,9 @@ const putFormActiveState = () => {
   });
 };
 
+/**
+ * Переводит фильтры в Активное состояние
+ */
 const putFiltersActiveState = () => {
   mapFilters.classList.remove('ad-form--disabled');
   mapFiltersInteractiveElements.forEach((mapFiltersInteractiveElement) => {

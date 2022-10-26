@@ -1,3 +1,4 @@
+import {POP_UP_CLOSING_TIME} from './contants.js';
 /**
  * Функция, возвращающая случайное целое число из переданного диапазона включительно
  * @param minNumber {number} начало диапазона
@@ -75,7 +76,7 @@ const showAlert = (massage) => {
   const showAlertText = showAlertTemplate.querySelector('.alert-danger__description');
   showAlertText.textContent = massage;
   document.body.insertAdjacentElement('beforeend', showAlertTemplate);
-  setTimeout(() => {showAlertTemplate.remove();}, 5000);
+  setTimeout(() => {showAlertTemplate.remove();}, POP_UP_CLOSING_TIME);
 };
 
 const isEscape = (evt) => evt.key === 'Escape';
