@@ -4,6 +4,8 @@ const adFormInteractiveElements = adForm.querySelectorAll('fieldset');
 const mapFilters = document.querySelector('.map__filters');
 const mapFiltersInteractiveElements = document.querySelectorAll('.map__filters > *');
 const address = adForm.querySelector('#address');
+const submitButtonForm = adForm.querySelector('.ad-form__submit');
+const resetButtonForm = adForm.querySelector('.ad-form__reset');
 
 /**
  * Переводит форму и фильтры в НЕактивное состояние
@@ -24,7 +26,7 @@ const putFormInactiveState = () => {
 putFormInactiveState();
 
 /**
- * Переводит форму и фильтры в Активное состояние
+ * Переводит форму в Активное состояние
  */
 const putFormActiveState = () => {
   isFormActive = true;
@@ -32,6 +34,12 @@ const putFormActiveState = () => {
   adFormInteractiveElements.forEach((groupInteractiveElements) => {
     groupInteractiveElements.disabled = false;
   });
+};
+
+/**
+ * Переводит фильтры в Активное состояние
+ */
+const putFiltersActiveState = () => {
   mapFilters.classList.remove('ad-form--disabled');
   mapFiltersInteractiveElements.forEach((mapFiltersInteractiveElement) => {
     mapFiltersInteractiveElement.disabled = false;
@@ -41,5 +49,9 @@ const putFormActiveState = () => {
 export {
   adForm,
   putFormActiveState,
-  address
+  putFiltersActiveState,
+  address,
+  submitButtonForm,
+  resetButtonForm,
+  mapFilters
 };

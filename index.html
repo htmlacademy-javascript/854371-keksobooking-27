@@ -103,7 +103,9 @@
       </fieldset>
       <fieldset class="ad-form__element ad-form__element--wide">
         <label class="ad-form__label" for="address">Адрес (координаты)</label>
-        <input id="address" name="address" readonly type="text">
+        <input
+          data-pristine-required-message="Пожалуйста, выберите адрес на карте"
+          id="address" name="address" readonly type="text" required>
       </fieldset>
       <fieldset class="ad-form__element">
         <label class="ad-form__label" for="type">Тип жилья</label>
@@ -250,6 +252,13 @@
   <div class="error">
     <p class="error__message">Ошибка размещения объявления</p>
     <button class="error__button" type="button">Попробовать снова</button>
+  </div>
+</template>
+<!--Сообщение об ошибке при отправке или получении данных-->
+<template id="alert-danger">
+  <div class="alert-danger">
+    <h3 class="alert-danger__header">Что пошло не так</h3>
+    <p class="alert-danger__description">Данные не загрузились</p>
   </div>
 </template>
 <script src="vendor/pristine/pristine.min.js"></script>

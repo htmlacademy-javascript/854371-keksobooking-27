@@ -1,4 +1,7 @@
-import {adForm} from './form.js';
+import {
+  adForm,
+} from './form.js';
+
 import {
   MAXIMUM_GUEST_ROOMS,
   VALUE_OPTION_NOT_FOR_GUESTS,
@@ -129,13 +132,9 @@ const updateTimeInOut = (evt) => {
 
 formElementTime.addEventListener('change', updateTimeInOut);
 
-adForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  pristine.validate();
-});
-
 export {
   price,
   kindType,
-  minPrice
+  minPrice,
+  pristine
 };

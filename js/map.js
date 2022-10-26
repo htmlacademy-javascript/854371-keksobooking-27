@@ -1,13 +1,14 @@
+import {getData} from './api.js';
 import {COORDINATES_MAIN_PIN} from './contants.js';
 
 import {
-  adsData,
   adsFragment
 } from './create-ads.js';
 
 import {
   putFormActiveState,
-  address
+  address,
+  putFiltersActiveState
 } from './form.js';
 
 import {adFormSlider} from './slider-for-form.js';
@@ -17,7 +18,7 @@ const map = L.map('map-canvas')
     putFormActiveState();
     adFormSlider.removeAttribute('disabled');
   })
-  .setView([COORDINATES_MAIN_PIN.lat, COORDINATES_MAIN_PIN.lng], 8.5);
+  .setView([COORDINATES_MAIN_PIN.lat, COORDINATES_MAIN_PIN.lng], 13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
@@ -41,6 +42,8 @@ const mainPinMarker = L.marker(
   }
 );
 
+address.value = `${COORDINATES_MAIN_PIN.lat}, ${COORDINATES_MAIN_PIN.lng}`;
+
 mainPinMarker.addTo(map);
 
 mainPinMarker.on('moveend', (evt) => {
@@ -56,6 +59,11 @@ const pinIcon = L.icon({
 
 const layerGroup = L.layerGroup().addTo(map);
 
+/**
+ * Отвечает за отрисовку каждого объяления в виде метки на карте
+ * @param point данные объявления
+ * @param index индекс элемента в массиве объявлений
+ */
 const createPoints = (point, index) => {
   const {location: {lat, lng}} = point;
   const adsMarker = L.marker(
@@ -72,6 +80,20 @@ const createPoints = (point, index) => {
     .bindPopup(adsFragment.children[index]);
 };
 
-adsData.forEach((adData, index) => {
-  createPoints(adData, index);
+const resetMap = () => {
+  mainPinMarker.setLatLng({
+    lat: COORDINATES_MAIN_PIN.lat,
+    lng: COORDINATES_MAIN_PIN.lng,
+  });
+  map.closePopup();
+  map.setView([COORDINATES_MAIN_PIN.lat, COORDINATES_MAIN_PIN.lng], 13);
+};
+
+getData((ads) => {
+  ads.forEach((adData, index) => {
+    createPoints(adData, index);
+  });
+  putFiltersActiveState();
 });
+
+export {resetMap};
