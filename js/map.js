@@ -1,4 +1,3 @@
-import {getData} from './api.js';
 import {COORDINATES_MAIN_PIN} from './contants.js';
 
 import {
@@ -83,17 +82,20 @@ const createPoints = (point, index) => {
 const resetMap = () => {
   mainPinMarker.setLatLng({
     lat: COORDINATES_MAIN_PIN.lat,
-    lng: COORDINATES_MAIN_PIN.lng,
+    lng: COORDINATES_MAIN_PIN.lng
   });
   map.closePopup();
   map.setView([COORDINATES_MAIN_PIN.lat, COORDINATES_MAIN_PIN.lng], 13);
 };
 
-getData((ads) => {
+const drawPinsOnLayerGroup = (ads) => {
   ads.forEach((adData, index) => {
     createPoints(adData, index);
   });
   putFiltersActiveState();
-});
+};
 
-export {resetMap};
+export {
+  resetMap,
+  drawPinsOnLayerGroup
+};

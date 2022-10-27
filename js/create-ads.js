@@ -1,5 +1,3 @@
-import {getData} from './api.js';
-
 import {HOUSING_TYPES_TRANSLATE} from './contants.js';
 
 import {
@@ -66,11 +64,8 @@ const createAds = (ads) => {
   });
 };
 
-getData((ads) => {
-  createAds(ads);
-});
-
 export {
   adsData,
-  adsFragment
+  adsFragment,
+  createAds
 };
