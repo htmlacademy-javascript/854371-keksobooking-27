@@ -16,6 +16,7 @@ const COORDINATES_MAIN_PIN = {
 const DATA_RECEIVING_ADDRESS = 'https://27.javascript.pages.academy/keksobooking/data';
 const DATA_SENDING_ADDRESS = 'https://27.javascript.pages.academy/keksobooking';
 const POP_UP_CLOSING_TIME = 5000;
+const NUMBER_VISIBLE_ADS = 10;
 
 export {
   HOUSING_TYPES_TRANSLATE,
@@ -26,5 +27,6 @@ export {
   COORDINATES_MAIN_PIN,
   DATA_RECEIVING_ADDRESS,
   DATA_SENDING_ADDRESS,
-  POP_UP_CLOSING_TIME
+  POP_UP_CLOSING_TIME,
+  NUMBER_VISIBLE_ADS
 };
