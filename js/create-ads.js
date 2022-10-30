@@ -8,7 +8,6 @@ import {
   editTemplate
 } from './utils.js';
 
-const adsFragment = document.createDocumentFragment();
 const adCardTemplate = document.querySelector('#card').content.querySelector('.popup');
 
 /**
@@ -16,7 +15,8 @@ const adCardTemplate = document.querySelector('#card').content.querySelector('.p
  * @param ads
  */
 const createAds = (ads) => {
-  ads = ads.splice(NUMBER_VISIBLE_ADS);
+  const adsFragment = document.createDocumentFragment();
+  ads.splice(NUMBER_VISIBLE_ADS);
   ads.forEach(({
     offer: {title, address, price, type, rooms, guests, checkin, checkout, features, description, photos},
     author: {avatar}
@@ -65,9 +65,9 @@ const createAds = (ads) => {
     }
     adsFragment.appendChild(adCard);
   });
+  return adsFragment;
 };
 
 export {
-  adsFragment,
   createAds
 };
