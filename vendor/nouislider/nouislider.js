@@ -628,10 +628,10 @@
       // Set orientation to an a numerical value for easy
       // array selection.
       switch (entry) {
-          case "horizontal":
+          case 'horizontal':
               parsed.ort = 0;
               break;
-          case "vertical":
+          case 'vertical':
               parsed.ort = 1;
               break;
           default:

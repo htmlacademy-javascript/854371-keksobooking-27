@@ -2,6 +2,10 @@ let isFormActive = false;
 const adForm = document.querySelector('.ad-form');
 const adFormInteractiveElements = adForm.querySelectorAll('fieldset');
 const mapFilters = document.querySelector('.map__filters');
+const filterHousingType = document.querySelector('#housing-type');
+const filterHousingPrice = document.querySelector('#housing-price');
+const filterHousingRooms = document.querySelector('#housing-rooms');
+const filterHousingGuests = document.querySelector('#housing-guests');
 const mapFiltersInteractiveElements = document.querySelectorAll('.map__filters > *');
 const address = adForm.querySelector('#address');
 const submitButtonForm = adForm.querySelector('.ad-form__submit');
@@ -53,5 +57,9 @@ export {
   address,
   submitButtonForm,
   resetButtonForm,
-  mapFilters
+  mapFilters,
+  filterHousingType,
+  filterHousingPrice,
+  filterHousingRooms,
+  filterHousingGuests
 };
