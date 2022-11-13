@@ -1,6 +1,7 @@
 import {
   AdsPrise,
-  DEFAULT_SELECT_VALUE
+  DEFAULT_SELECT_VALUE,
+  TIMEOUT_FILTER_DELAY
 } from './contants.js';
 
 import {createAds} from './create-ads.js';
@@ -94,19 +95,23 @@ const drawFilteredLabels = (filtered) => {
 
 const filterSelectors = (ads) => {
   const copyAds = ads.slice();
+  let timeoutId;
   mapFilters.addEventListener('change', () => {
-    filteredAds = copyAds;
-    onFeatureMapCheckboxesChange(filteredAds);
-    onHousingTypeChange();
-    onHousingPriceChange();
-    onHousingRoomsChange();
-    onFilterHousingGuestsChange();
-    if (filteredAds.length !== 0) {
-      drawFilteredLabels(filteredAds);
-    } else {
-      layerGroup.clearLayers();
-      showAlert('По вашим фильтрам не найдено совпадений');
-    }
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      filteredAds = copyAds;
+      onFeatureMapCheckboxesChange(filteredAds);
+      onHousingTypeChange();
+      onHousingPriceChange();
+      onHousingRoomsChange();
+      onFilterHousingGuestsChange();
+      if (filteredAds.length !== 0) {
+        drawFilteredLabels(filteredAds);
+      } else {
+        layerGroup.clearLayers();
+        showAlert('По вашим фильтрам не найдено совпадений');
+      }
+    }, TIMEOUT_FILTER_DELAY);
   });
 };
 
