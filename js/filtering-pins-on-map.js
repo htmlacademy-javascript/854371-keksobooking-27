@@ -18,7 +18,10 @@ import {
   layerGroup
 } from './map.js';
 
-import {showAlert} from './utils.js';
+import {
+  compareArrays,
+  showAlert
+} from './utils.js';
 
 let filteredAds;
 
@@ -68,41 +71,36 @@ const onFeatureMapCheckboxesChange = (filteredAdsItems) => {
       featuresCheckboxesValues.push(featuresCheckbox.value);
     });
 
-    for (let i = 0; i < filteredAdsCopy.length - 1; i++) {
-      const {offer: {features}} = filteredAdsCopy[i];
-      if (!features) {
-        filteredAdsCopy.splice(i, 1);
-        i -= 1;
-      } else {
-        featuresCheckboxesValues.forEach((feature) => {
-          const isAdvantageSame = features.some((element) => element === feature);
-          if (!isAdvantageSame) {
-            filteredAdsCopy.splice(i, 1);
-            i -= 1;
-          }
-        });
+    const sortFilteredAdsCopy = [];
+    filteredAdsCopy.forEach((filteredAd) => {
+      const {offer: {features}} = filteredAd;
+      if (features) {
+        const isCompare = compareArrays(features, featuresCheckboxesValues);
+        if (isCompare) {
+          sortFilteredAdsCopy.push(filteredAd);
+        }
       }
-    }
-    //console.log(filteredAdsCopy);
-    filteredAds = filteredAdsCopy;
+    });
+    filteredAds = sortFilteredAdsCopy;
   }
 };
 
 const drawFilteredLabels = (filtered) => {
+  const copyFilteredItems = filtered.slice();
   layerGroup.clearLayers();
-  const filteredAdsFragment = createAds(filtered);
-  drawPinsOnLayerGroup(filtered, filteredAdsFragment);
+  const filteredAdsFragment = createAds(copyFilteredItems);
+  drawPinsOnLayerGroup(copyFilteredItems, filteredAdsFragment);
 };
 
 const filterSelectors = (ads) => {
   const copyAds = ads.slice();
   mapFilters.addEventListener('change', () => {
     filteredAds = copyAds;
+    onFeatureMapCheckboxesChange(filteredAds);
     onHousingTypeChange();
     onHousingPriceChange();
     onHousingRoomsChange();
     onFilterHousingGuestsChange();
-    onFeatureMapCheckboxesChange(filteredAds);
     if (filteredAds.length !== 0) {
       drawFilteredLabels(filteredAds);
     } else {

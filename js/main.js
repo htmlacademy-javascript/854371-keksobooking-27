@@ -8,7 +8,7 @@ import {getData} from './api.js';
 import './working-with-form.js';
 
 getData((ads) => {
-  //const copyAds = ads.slice();
-  filterSelectors(ads);
+  const copyAds = ads.slice();
+  filterSelectors(copyAds);
   drawPinsOnLayerGroup(ads, createAds(ads));
 });

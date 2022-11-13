@@ -79,6 +79,14 @@ const showAlert = (massage) => {
   setTimeout(() => {showAlertTemplate.remove();}, POP_UP_CLOSING_TIME);
 };
 
+/**
+ * Сравнивает массивы, возращает False, если хотябы один элемент arrayB НЕ включен в массив arrayA
+ * @param arrayA {array}
+ * @param arrayB {array}
+ * @return {boolean}
+ */
+const compareArrays = (arrayA, arrayB) => arrayA.length >= arrayB.length && arrayB.every((element) => arrayA.includes(element));
+
 const isEscape = (evt) => evt.key === 'Escape';
 
 export {
@@ -88,5 +96,6 @@ export {
   translateWord,
   editTemplate,
   showAlert,
-  isEscape
+  isEscape,
+  compareArrays
 };
