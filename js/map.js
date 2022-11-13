@@ -1,9 +1,4 @@
-import {getData} from './api.js';
 import {COORDINATES_MAIN_PIN} from './contants.js';
-
-import {
-  adsFragment
-} from './create-ads.js';
 
 import {
   putFormActiveState,
@@ -63,8 +58,9 @@ const layerGroup = L.layerGroup().addTo(map);
  * Отвечает за отрисовку каждого объяления в виде метки на карте
  * @param point данные объявления
  * @param index индекс элемента в массиве объявлений
+ * @param documentFragment подготовленная разметка для балунов
  */
-const createPoints = (point, index) => {
+const createPoints = (point, index, documentFragment) => {
   const {location: {lat, lng}} = point;
   const adsMarker = L.marker(
     {
@@ -77,23 +73,28 @@ const createPoints = (point, index) => {
   );
   adsMarker
     .addTo(layerGroup)
-    .bindPopup(adsFragment.children[index]);
+    .bindPopup(documentFragment.children[index]);
 };
 
 const resetMap = () => {
   mainPinMarker.setLatLng({
     lat: COORDINATES_MAIN_PIN.lat,
-    lng: COORDINATES_MAIN_PIN.lng,
+    lng: COORDINATES_MAIN_PIN.lng
   });
   map.closePopup();
   map.setView([COORDINATES_MAIN_PIN.lat, COORDINATES_MAIN_PIN.lng], 13);
 };
 
-getData((ads) => {
+const drawPinsOnLayerGroup = (ads, documentFragment) => {
   ads.forEach((adData, index) => {
-    createPoints(adData, index);
+    createPoints(adData, index, documentFragment);
   });
   putFiltersActiveState();
-});
+};
 
-export {resetMap};
+export {
+  map,
+  layerGroup,
+  resetMap,
+  drawPinsOnLayerGroup
+};

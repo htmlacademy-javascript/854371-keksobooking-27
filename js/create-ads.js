@@ -1,14 +1,13 @@
-import {getData} from './api.js';
-
-import {HOUSING_TYPES_TRANSLATE} from './contants.js';
+import {
+  HOUSING_TYPES_TRANSLATE,
+  NUMBER_VISIBLE_ADS
+} from './contants.js';
 
 import {
   translateWord,
   editTemplate
 } from './utils.js';
 
-let adsData;
-const adsFragment = document.createDocumentFragment();
 const adCardTemplate = document.querySelector('#card').content.querySelector('.popup');
 
 /**
@@ -16,6 +15,8 @@ const adCardTemplate = document.querySelector('#card').content.querySelector('.p
  * @param ads
  */
 const createAds = (ads) => {
+  const adsFragment = document.createDocumentFragment();
+  ads.splice(NUMBER_VISIBLE_ADS);
   ads.forEach(({
     offer: {title, address, price, type, rooms, guests, checkin, checkout, features, description, photos},
     author: {avatar}
@@ -64,13 +65,9 @@ const createAds = (ads) => {
     }
     adsFragment.appendChild(adCard);
   });
+  return adsFragment;
 };
 
-getData((ads) => {
-  createAds(ads);
-});
-
 export {
-  adsData,
-  adsFragment
+  createAds
 };
