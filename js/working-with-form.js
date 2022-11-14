@@ -63,7 +63,7 @@ const onSuccess = () => {
   submitButtonForm.textContent = 'Опубликовать';
   document.body.insertAdjacentElement('beforeend', popupOnSuccess);
   const popupOnSuccessElement = document.querySelector('.success');
-  document.addEventListener('keydown', onPopupSuccessEscDown);
+  document.addEventListener('keydown', onPopupSuccessEscDown, {once: true});
   popupOnSuccessElement.addEventListener('click', onPopupSuccessClick);
   resetForm();
 };
@@ -73,7 +73,7 @@ const onFail = () => {
   submitButtonForm.textContent = 'Опубликовать';
   document.body.insertAdjacentElement('beforeend', popupOnError);
   const popupOnErrorElement = document.querySelector('.error');
-  document.addEventListener('keydown', onPopupErrorEscDown);
+  document.addEventListener('keydown', onPopupErrorEscDown, {once: true});
   popupOnErrorElement.addEventListener('click', onPopupErrorEscClick);
 };
 
