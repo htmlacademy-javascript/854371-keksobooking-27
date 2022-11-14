@@ -6,6 +6,7 @@ import {drawPinsOnLayerGroup} from './map.js';
 import './slider-for-form.js';
 import {getData} from './api.js';
 import './working-with-form.js';
+import './preview.js';
 
 getData((ads) => {
   const copyAds = ads.slice();

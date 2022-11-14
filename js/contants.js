@@ -22,6 +22,8 @@ const AdsPrise = {
   MIN: 10000,
   MAX: 50000
 };
+const TIMEOUT_FILTER_DELAY = 500;
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 export {
   HOUSING_TYPES_TRANSLATE,
@@ -35,5 +37,7 @@ export {
   POP_UP_CLOSING_TIME,
   NUMBER_VISIBLE_ADS,
   DEFAULT_SELECT_VALUE,
-  AdsPrise
+  AdsPrise,
+  TIMEOUT_FILTER_DELAY,
+  FILE_TYPES
 };
