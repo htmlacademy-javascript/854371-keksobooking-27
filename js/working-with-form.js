@@ -1,13 +1,26 @@
 import {sendData} from './api.js';
 
 import {
+  AVATAR_PREVIEW_SRC_DEFAULT,
+  COORDINATES_MAIN_PIN,
+  HOUSE_PREVIEW_COLOR_DEFAULT
+} from './contants.js';
+
+import {
   adForm,
   mapFilters,
   submitButtonForm,
-  resetButtonForm
+  resetButtonForm,
+  address
 } from './form.js';
 
 import {resetMap} from './map.js';
+
+import {
+  avatarPreview,
+  housePreview
+} from './preview.js';
+
 import {isEscape} from './utils.js';
 import {pristine} from './validate-form.js';
 
@@ -40,6 +53,9 @@ const resetForm = () => {
   adForm.reset();
   mapFilters.reset();
   resetMap();
+  address.value = `${COORDINATES_MAIN_PIN.lat}, ${COORDINATES_MAIN_PIN.lng}`;
+  avatarPreview.src = AVATAR_PREVIEW_SRC_DEFAULT;
+  housePreview.style.background = HOUSE_PREVIEW_COLOR_DEFAULT;
 };
 
 const onSuccess = () => {

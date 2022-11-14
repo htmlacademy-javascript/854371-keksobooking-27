@@ -10,8 +10,8 @@ const MAXIMUM_GUEST_ROOMS = 3;
 const VALUE_OPTION_NOT_FOR_GUESTS = 0;
 const MAX_PRICE_INPUT_VALUE = 100000;
 const COORDINATES_MAIN_PIN = {
-  lat: 35.682,
-  lng: 139.753
+  lat: 35.68521,
+  lng: 139.75261
 };
 const DATA_RECEIVING_ADDRESS = 'https://27.javascript.pages.academy/keksobooking/data';
 const DATA_SENDING_ADDRESS = 'https://27.javascript.pages.academy/keksobooking';
@@ -24,6 +24,8 @@ const AdsPrise = {
 };
 const TIMEOUT_FILTER_DELAY = 500;
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+const AVATAR_PREVIEW_SRC_DEFAULT = 'img/muffin-grey.svg';
+const HOUSE_PREVIEW_COLOR_DEFAULT = '#e4e4de';
 
 export {
   HOUSING_TYPES_TRANSLATE,
@@ -39,5 +41,7 @@ export {
   DEFAULT_SELECT_VALUE,
   AdsPrise,
   TIMEOUT_FILTER_DELAY,
-  FILE_TYPES
+  FILE_TYPES,
+  AVATAR_PREVIEW_SRC_DEFAULT,
+  HOUSE_PREVIEW_COLOR_DEFAULT
 };

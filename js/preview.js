@@ -30,3 +30,8 @@ const showPreview = (fileChooser, previewBlock) => {
 
 showPreview(avatarChooser, avatarPreview);
 showPreview(houseChooser, housePreview);
+
+export {
+  avatarPreview,
+  housePreview
+};
