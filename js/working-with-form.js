@@ -17,8 +17,8 @@ import {
 import {resetMap} from './map.js';
 
 import {
-  avatarPreview,
-  housePreview
+  avatarPreviewElement,
+  housePreviewElement
 } from './preview.js';
 
 import {isEscape} from './utils.js';
@@ -54,8 +54,8 @@ const resetForm = () => {
   mapFiltersElement.reset();
   resetMap();
   addressElement.value = `${COORDINATES_MAIN_PIN.lat}, ${COORDINATES_MAIN_PIN.lng}`;
-  avatarPreview.src = AVATAR_PREVIEW_SRC_DEFAULT;
-  housePreview.style.background = HOUSE_PREVIEW_COLOR_DEFAULT;
+  avatarPreviewElement.src = AVATAR_PREVIEW_SRC_DEFAULT;
+  housePreviewElement.style.background = HOUSE_PREVIEW_COLOR_DEFAULT;
 };
 
 const onSuccess = () => {
