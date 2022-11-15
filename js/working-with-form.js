@@ -7,11 +7,11 @@ import {
 } from './contants.js';
 
 import {
-  adForm,
-  mapFilters,
-  submitButtonForm,
-  resetButtonForm,
-  address
+  adFormElement,
+  mapFiltersElement,
+  submitButtonFormElement,
+  resetButtonFormElement,
+  addressElement
 } from './form.js';
 
 import {resetMap} from './map.js';
@@ -50,17 +50,17 @@ function onPopupErrorEscDown (evt) {
 }
 
 const resetForm = () => {
-  adForm.reset();
-  mapFilters.reset();
+  adFormElement.reset();
+  mapFiltersElement.reset();
   resetMap();
-  address.value = `${COORDINATES_MAIN_PIN.lat}, ${COORDINATES_MAIN_PIN.lng}`;
+  addressElement.value = `${COORDINATES_MAIN_PIN.lat}, ${COORDINATES_MAIN_PIN.lng}`;
   avatarPreview.src = AVATAR_PREVIEW_SRC_DEFAULT;
   housePreview.style.background = HOUSE_PREVIEW_COLOR_DEFAULT;
 };
 
 const onSuccess = () => {
-  submitButtonForm.disabled = false;
-  submitButtonForm.textContent = 'Опубликовать';
+  submitButtonFormElement.disabled = false;
+  submitButtonFormElement.textContent = 'Опубликовать';
   document.body.insertAdjacentElement('beforeend', popupOnSuccess);
   const popupOnSuccessElement = document.querySelector('.success');
   document.addEventListener('keydown', onPopupSuccessEscDown, {once: true});
@@ -69,23 +69,23 @@ const onSuccess = () => {
 };
 
 const onFail = () => {
-  submitButtonForm.disabled = false;
-  submitButtonForm.textContent = 'Опубликовать';
+  submitButtonFormElement.disabled = false;
+  submitButtonFormElement.textContent = 'Опубликовать';
   document.body.insertAdjacentElement('beforeend', popupOnError);
   const popupOnErrorElement = document.querySelector('.error');
   document.addEventListener('keydown', onPopupErrorEscDown, {once: true});
   popupOnErrorElement.addEventListener('click', onPopupErrorEscClick);
 };
 
-adForm.addEventListener('submit', (evt) => {
+adFormElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
   if (isValid) {
-    submitButtonForm.disabled = true;
-    submitButtonForm.textContent = 'Публикуем ...';
-    const formData = new FormData(adForm);
+    submitButtonFormElement.disabled = true;
+    submitButtonFormElement.textContent = 'Публикуем ...';
+    const formData = new FormData(adFormElement);
     sendData(onSuccess, onFail, formData);
   }
 });
 
-resetButtonForm.addEventListener('click', resetForm);
+resetButtonFormElement.addEventListener('click', resetForm);

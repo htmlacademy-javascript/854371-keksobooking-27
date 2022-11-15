@@ -1,5 +1,5 @@
 import {
-  adForm,
+  adFormElement,
 } from './form.js';
 
 import {
@@ -22,9 +22,9 @@ const pristineConfig = {
   errorTextParent: 'ad-form__element',
   errorTextClass: 'text-help'
 };
-const pristine = new Pristine(adForm, pristineConfig);
-const kindType = adForm.querySelector('#type');
-const price = adForm.querySelector('#price');
+const pristine = new Pristine(adFormElement, pristineConfig);
+const kindType = adFormElement.querySelector('#type');
+const price = adFormElement.querySelector('#price');
 
 /**
  * Функция для валидации цены
@@ -48,8 +48,8 @@ function onPriceChange() {
 kindType.addEventListener('change', onPriceChange);
 pristine.addValidator(price, validatePrice, getPriceErrorMessage);
 
-const roomNumber = adForm.querySelector('#room_number');
-const capacity = adForm.querySelector('#capacity');
+const roomNumber = adFormElement.querySelector('#room_number');
+const capacity = adFormElement.querySelector('#capacity');
 
 /**
  * Валидирует колличество комнат, возвращает false если колличество не соответствует требованиям
@@ -97,9 +97,9 @@ capacity.addEventListener('change', onCapacityChange);
 pristine.addValidator(roomNumber, validateRoomNumber, getRoomNumberErrorMessage);
 pristine.addValidator(capacity, validateCapacity, 'Для не гостей должно быть больше 3-х комнат');
 
-const formElementTime = adForm.querySelector('.ad-form__element--time');
-const timeIn = adForm.querySelector('#timein');
-const timeOut = adForm.querySelector('#timeout');
+const formElementTime = adFormElement.querySelector('.ad-form__element--time');
+const timeIn = adFormElement.querySelector('#timein');
+const timeOut = adFormElement.querySelector('#timeout');
 const updateTimeInOut = (evt) => {
   const element = evt.target;
   if (element.id === 'timein') {

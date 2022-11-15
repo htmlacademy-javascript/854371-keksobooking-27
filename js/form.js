@@ -1,26 +1,26 @@
 let isFormActive = false;
-const adForm = document.querySelector('.ad-form');
-const adFormInteractiveElements = adForm.querySelectorAll('fieldset');
-const mapFilters = document.querySelector('.map__filters');
-const filterHousingType = document.querySelector('#housing-type');
-const filterHousingPrice = document.querySelector('#housing-price');
-const filterHousingRooms = document.querySelector('#housing-rooms');
-const filterHousingGuests = document.querySelector('#housing-guests');
+const adFormElement = document.querySelector('.ad-form');
+const adFormInteractiveElements = adFormElement.querySelectorAll('fieldset');
+const mapFiltersElement = document.querySelector('.map__filters');
+const filterHousingTypeElement = document.querySelector('#housing-type');
+const filterHousingPriceElement = document.querySelector('#housing-price');
+const filterHousingRoomsElement = document.querySelector('#housing-rooms');
+const filterHousingGuestsElement = document.querySelector('#housing-guests');
 const mapFiltersInteractiveElements = document.querySelectorAll('.map__filters > *');
-const address = adForm.querySelector('#address');
-const submitButtonForm = adForm.querySelector('.ad-form__submit');
-const resetButtonForm = adForm.querySelector('.ad-form__reset');
+const addressElement = adFormElement.querySelector('#address');
+const submitButtonFormElement = adFormElement.querySelector('.ad-form__submit');
+const resetButtonFormElement = adFormElement.querySelector('.ad-form__reset');
 
 /**
  * Переводит форму и фильтры в НЕактивное состояние
  */
 const putFormInactiveState = () => {
   if (!isFormActive) {
-    adForm.classList.add('ad-form--disabled');
+    adFormElement.classList.add('ad-form--disabled');
     adFormInteractiveElements.forEach((groupInteractiveElements) => {
       groupInteractiveElements.disabled = true;
     });
-    mapFilters.classList.add('ad-form--disabled');
+    mapFiltersElement.classList.add('ad-form--disabled');
     mapFiltersInteractiveElements.forEach((mapFiltersInteractiveElement) => {
       mapFiltersInteractiveElement.disabled = true;
     });
@@ -34,7 +34,7 @@ putFormInactiveState();
  */
 const putFormActiveState = () => {
   isFormActive = true;
-  adForm.classList.remove('ad-form--disabled');
+  adFormElement.classList.remove('ad-form--disabled');
   adFormInteractiveElements.forEach((groupInteractiveElements) => {
     groupInteractiveElements.disabled = false;
   });
@@ -44,22 +44,22 @@ const putFormActiveState = () => {
  * Переводит фильтры в Активное состояние
  */
 const putFiltersActiveState = () => {
-  mapFilters.classList.remove('ad-form--disabled');
+  mapFiltersElement.classList.remove('ad-form--disabled');
   mapFiltersInteractiveElements.forEach((mapFiltersInteractiveElement) => {
     mapFiltersInteractiveElement.disabled = false;
   });
 };
 
 export {
-  adForm,
+  adFormElement,
   putFormActiveState,
   putFiltersActiveState,
-  address,
-  submitButtonForm,
-  resetButtonForm,
-  mapFilters,
-  filterHousingType,
-  filterHousingPrice,
-  filterHousingRooms,
-  filterHousingGuests
+  addressElement,
+  submitButtonFormElement,
+  resetButtonFormElement,
+  mapFiltersElement,
+  filterHousingTypeElement,
+  filterHousingPriceElement,
+  filterHousingRoomsElement,
+  filterHousingGuestsElement
 };

@@ -5,7 +5,7 @@ import {
 
 import {
   putFormActiveState,
-  address,
+  addressElement,
   putFiltersActiveState
 } from './form.js';
 
@@ -40,13 +40,13 @@ const mainPinMarker = L.marker(
   }
 );
 
-address.value = `${COORDINATES_MAIN_PIN.lat}, ${COORDINATES_MAIN_PIN.lng}`;
+addressElement.value = `${COORDINATES_MAIN_PIN.lat}, ${COORDINATES_MAIN_PIN.lng}`;
 
 mainPinMarker.addTo(map);
 
 mainPinMarker.on('moveend', (evt) => {
   const latLng = evt.target.getLatLng();
-  address.value = `${latLng.lat.toFixed(5)}, ${latLng.lng.toFixed(5)}`;
+  addressElement.value = `${latLng.lat.toFixed(5)}, ${latLng.lng.toFixed(5)}`;
 });
 
 const pinIcon = L.icon({

@@ -7,11 +7,11 @@ import {
 import {createAds} from './create-ads.js';
 
 import {
-  mapFilters,
-  filterHousingType,
-  filterHousingPrice,
-  filterHousingRooms,
-  filterHousingGuests
+  mapFiltersElement,
+  filterHousingTypeElement,
+  filterHousingPriceElement,
+  filterHousingRoomsElement,
+  filterHousingGuestsElement
 } from './form.js';
 
 import {
@@ -27,14 +27,14 @@ import {
 let filteredAds;
 
 const onHousingTypeChange = () => {
-  if (filterHousingType.value !== DEFAULT_SELECT_VALUE) {
-    filteredAds = filteredAds.filter(({offer: {type}}) => type === filterHousingType.value);
+  if (filterHousingTypeElement.value !== DEFAULT_SELECT_VALUE) {
+    filteredAds = filteredAds.filter(({offer: {type}}) => type === filterHousingTypeElement.value);
   }
 };
 
 const onHousingPriceChange = () => {
-  if (filterHousingPrice.value !== DEFAULT_SELECT_VALUE) {
-    const levelPrice = filterHousingPrice.value;
+  if (filterHousingPriceElement.value !== DEFAULT_SELECT_VALUE) {
+    const levelPrice = filterHousingPriceElement.value;
     switch (levelPrice) {
       case 'middle':
         filteredAds = filteredAds.filter(({offer: {price}}) => price >= AdsPrise.MIN && price <= AdsPrise.MAX);
@@ -50,25 +50,25 @@ const onHousingPriceChange = () => {
 };
 
 const onHousingRoomsChange = () => {
-  if (filterHousingRooms.value !== DEFAULT_SELECT_VALUE) {
-    const countRooms = filterHousingRooms.value;
+  if (filterHousingRoomsElement.value !== DEFAULT_SELECT_VALUE) {
+    const countRooms = filterHousingRoomsElement.value;
     filteredAds = filteredAds.filter(({offer: {rooms}}) => rooms === +countRooms);
   }
 };
 
 const onFilterHousingGuestsChange = () => {
-  if (filterHousingGuests.value !== DEFAULT_SELECT_VALUE) {
-    const countGuests = filterHousingGuests.value;
+  if (filterHousingGuestsElement.value !== DEFAULT_SELECT_VALUE) {
+    const countGuests = filterHousingGuestsElement.value;
     filteredAds = filteredAds.filter(({offer: {guests}}) => guests === +countGuests);
   }
 };
 
 const onFeatureMapCheckboxesChange = (filteredAdsItems) => {
-  const featuresCheckboxesElements = document.querySelectorAll('.map__checkbox:checked');
+  const featuresCheckboxes = document.querySelectorAll('.map__checkbox:checked');
   const filteredAdsCopy = filteredAdsItems.slice();
-  if (featuresCheckboxesElements.length !== 0) {
+  if (featuresCheckboxes.length !== 0) {
     const featuresCheckboxesValues = [];
-    featuresCheckboxesElements.forEach((featuresCheckbox) => {
+    featuresCheckboxes.forEach((featuresCheckbox) => {
       featuresCheckboxesValues.push(featuresCheckbox.value);
     });
 
@@ -96,7 +96,7 @@ const drawFilteredLabels = (filtered) => {
 const filterSelectors = (ads) => {
   const copyAds = ads.slice();
   let timeoutId;
-  mapFilters.addEventListener('change', () => {
+  mapFiltersElement.addEventListener('change', () => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       filteredAds = copyAds;

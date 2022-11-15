@@ -1,12 +1,12 @@
 import {MAX_PRICE_INPUT_VALUE} from './contants.js';
-import {adForm} from './form.js';
+import {adFormElement} from './form.js';
 import {
   kindType,
   minPrice,
   price
 } from './validate-form.js';
 
-const adFormSlider = adForm.querySelector('.ad-form__slider');
+const adFormSlider = adFormElement.querySelector('.ad-form__slider');
 
 noUiSlider.create(adFormSlider, {
   range: {
