@@ -24,28 +24,28 @@ import {
 import {isEscape} from './utils.js';
 import {pristine} from './validate-form.js';
 
-const popupOnSuccess = document.querySelector('#success').content
+const popupOnSuccessTemplateElement = document.querySelector('#success').content
   .querySelector('.success').cloneNode(true);
-const popupOnError = document.querySelector('#error').content
+const popupOnErrorTemplateElement = document.querySelector('#error').content
   .querySelector('.error').cloneNode(true);
 
 function onPopupSuccessClick () {
-  popupOnSuccess.remove();
+  popupOnSuccessTemplateElement.remove();
 }
 
 function onPopupSuccessEscDown (evt) {
   if (isEscape(evt)) {
-    popupOnSuccess.remove();
+    popupOnSuccessTemplateElement.remove();
   }
 }
 
 function onPopupErrorEscClick () {
-  popupOnError.remove();
+  popupOnErrorTemplateElement.remove();
 }
 
 function onPopupErrorEscDown (evt) {
   if (isEscape(evt)) {
-    popupOnError.remove();
+    popupOnErrorTemplateElement.remove();
   }
 }
 
@@ -61,7 +61,7 @@ const resetForm = () => {
 const onSuccess = () => {
   submitButtonFormElement.disabled = false;
   submitButtonFormElement.textContent = 'Опубликовать';
-  document.body.insertAdjacentElement('beforeend', popupOnSuccess);
+  document.body.insertAdjacentElement('beforeend', popupOnSuccessTemplateElement);
   const popupOnSuccessElement = document.querySelector('.success');
   document.addEventListener('keydown', onPopupSuccessEscDown, {once: true});
   popupOnSuccessElement.addEventListener('click', onPopupSuccessClick);
@@ -71,7 +71,7 @@ const onSuccess = () => {
 const onFail = () => {
   submitButtonFormElement.disabled = false;
   submitButtonFormElement.textContent = 'Опубликовать';
-  document.body.insertAdjacentElement('beforeend', popupOnError);
+  document.body.insertAdjacentElement('beforeend', popupOnErrorTemplateElement);
   const popupOnErrorElement = document.querySelector('.error');
   document.addEventListener('keydown', onPopupErrorEscDown, {once: true});
   popupOnErrorElement.addEventListener('click', onPopupErrorEscClick);
