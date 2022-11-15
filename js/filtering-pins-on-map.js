@@ -64,11 +64,11 @@ const onFilterHousingGuestsChange = () => {
 };
 
 const onFeatureMapCheckboxesChange = (filteredAdsItems) => {
-  const featuresCheckboxes = document.querySelectorAll('.map__checkbox:checked');
+  const featuresCheckboxesElements = document.querySelectorAll('.map__checkbox:checked');
   const filteredAdsCopy = filteredAdsItems.slice();
-  if (featuresCheckboxes.length !== 0) {
+  if (featuresCheckboxesElements.length !== 0) {
     const featuresCheckboxesValues = [];
-    featuresCheckboxes.forEach((featuresCheckbox) => {
+    featuresCheckboxesElements.forEach((featuresCheckbox) => {
       featuresCheckboxesValues.push(featuresCheckbox.value);
     });
 
