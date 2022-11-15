@@ -1,11 +1,11 @@
 import {FILE_TYPES} from './contants.js';
-import {adForm} from './form.js';
+import {adFormElement} from './form.js';
 import {showAlert} from './utils.js';
 
-const avatarChooser = adForm.querySelector('#avatar');
-const houseChooser = adForm.querySelector('#images');
-const avatarPreview = adForm.querySelector('.ad-form-header__preview img');
-const housePreview = adForm.querySelector('.ad-form__photo');
+const avatarChooserElement = adFormElement.querySelector('#avatar');
+const houseChooserElement = adFormElement.querySelector('#images');
+const avatarPreviewElement = adFormElement.querySelector('.ad-form-header__preview img');
+const housePreviewElement = adFormElement.querySelector('.ad-form__photo');
 
 const showPreview = (fileChooser, previewBlock) => {
   fileChooser.addEventListener('change', () => {
@@ -28,5 +28,10 @@ const showPreview = (fileChooser, previewBlock) => {
   });
 };
 
-showPreview(avatarChooser, avatarPreview);
-showPreview(houseChooser, housePreview);
+showPreview(avatarChooserElement, avatarPreviewElement);
+showPreview(houseChooserElement, housePreviewElement);
+
+export {
+  avatarPreviewElement,
+  housePreviewElement
+};
