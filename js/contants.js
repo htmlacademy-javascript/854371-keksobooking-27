@@ -13,6 +13,20 @@ const COORDINATES_MAIN_PIN = {
   lat: 35.68521,
   lng: 139.75261
 };
+const Map = {
+  LAYER: {
+    URL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    MAX_ZOOM: 19,
+    ATTRIBUTION_HTML: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  },
+  MAIN_MARKER_ICON: {
+    URL: './img/main-pin.svg',
+    SIZE_HEIGHT: 52,
+    SIZE_WEIGHT: 52,
+    ANCHOR_HEIGHT: 52,
+    ANCHOR_WEIGHT: 26
+  }
+};
 const DATA_RECEIVING_ADDRESS = 'https://27.javascript.pages.academy/keksobooking/data';
 const DATA_SENDING_ADDRESS = 'https://27.javascript.pages.academy/keksobooking';
 const POP_UP_CLOSING_TIME = 5000;
@@ -33,6 +47,7 @@ export {
   MAXIMUM_GUEST_ROOMS,
   VALUE_OPTION_NOT_FOR_GUESTS,
   MAX_PRICE_INPUT_VALUE,
+  Map,
   COORDINATES_MAIN_PIN,
   DATA_RECEIVING_ADDRESS,
   DATA_SENDING_ADDRESS,

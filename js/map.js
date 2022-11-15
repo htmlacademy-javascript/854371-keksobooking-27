@@ -1,4 +1,7 @@
-import {COORDINATES_MAIN_PIN} from './contants.js';
+import {
+  COORDINATES_MAIN_PIN,
+  Map
+} from './contants.js';
 
 import {
   putFormActiveState,
@@ -15,15 +18,15 @@ const map = L.map('map-canvas')
   })
   .setView([COORDINATES_MAIN_PIN.lat, COORDINATES_MAIN_PIN.lng], 13);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+L.tileLayer(Map.LAYER.URL, {
+  maxZoom: Map.LAYER.MAX_ZOOM,
+  attribution:  Map.LAYER.ATTRIBUTION_HTML
 }).addTo(map);
 
 const mainMarkerIcon = L.icon({
-  iconUrl: './img/main-pin.svg',
-  iconSize: [52, 52],
-  iconAnchor: [26, 52]
+  iconUrl: Map.MAIN_MARKER_ICON.URL,
+  iconSize: [Map.MAIN_MARKER_ICON.SIZE_WEIGHT, Map.MAIN_MARKER_ICON.SIZE_HEIGHT],
+  iconAnchor: [Map.MAIN_MARKER_ICON.ANCHOR_WEIGHT, Map.MAIN_MARKER_ICON.ANCHOR_HEIGHT]
 });
 
 const mainPinMarker = L.marker(
