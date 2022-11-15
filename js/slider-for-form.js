@@ -1,9 +1,9 @@
 import {MAX_PRICE_INPUT_VALUE} from './contants.js';
 import {adFormElement} from './form.js';
 import {
-  kindType,
+  kindTypeElement,
   minPrice,
-  price
+  priceElement
 } from './validate-form.js';
 
 const adFormSliderElement = adFormElement.querySelector('.ad-form__slider');
@@ -23,19 +23,19 @@ noUiSlider.create(adFormSliderElement, {
 });
 
 const onAdFormSliderUpdate = () => {
-  price.value = adFormSliderElement.noUiSlider.get();
+  priceElement.value = adFormSliderElement.noUiSlider.get();
 };
 
 adFormSliderElement.noUiSlider.on('update', onAdFormSliderUpdate);
 
 const onPriceChange = () => {
-  adFormSliderElement.noUiSlider.set(price.value);
+  adFormSliderElement.noUiSlider.set(priceElement.value);
 };
 
-price.addEventListener('change', onPriceChange);
+priceElement.addEventListener('change', onPriceChange);
 
 const onKindTypeChange = () => {
-  const value = kindType.value;
+  const value = kindTypeElement.value;
   adFormSliderElement.noUiSlider.updateOptions({
     range: {
       min: minPrice[value],
@@ -45,7 +45,7 @@ const onKindTypeChange = () => {
   });
 };
 
-kindType.addEventListener('change', onKindTypeChange);
+kindTypeElement.addEventListener('change', onKindTypeChange);
 
 adFormSliderElement.setAttribute('disabled', 'true');
 
