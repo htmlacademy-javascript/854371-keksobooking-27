@@ -9,12 +9,12 @@ import {
   putFiltersActiveState
 } from './form.js';
 
-import {adFormSlider} from './slider-for-form.js';
+import {adFormSliderElement} from './slider-for-form.js';
 
 const map = L.map('map-canvas')
   .on('load', () => {
     putFormActiveState();
-    adFormSlider.removeAttribute('disabled');
+    adFormSliderElement.removeAttribute('disabled');
   })
   .setView([COORDINATES_MAIN_PIN.lat, COORDINATES_MAIN_PIN.lng], 13);
 
