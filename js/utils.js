@@ -32,11 +32,11 @@ const editTemplate = (classSearched, isProperty, templateElement, textContent) =
 };
 
 const showAlert = (massage) => {
-  const showAlertTemplate = document.querySelector('#alert-danger').content.querySelector('.alert-danger').cloneNode(true);
-  const showAlertText = showAlertTemplate.querySelector('.alert-danger__description');
-  showAlertText.textContent = massage;
-  document.body.insertAdjacentElement('beforeend', showAlertTemplate);
-  setTimeout(() => {showAlertTemplate.remove();}, POP_UP_CLOSING_TIME);
+  const showAlertTemplateElement = document.querySelector('#alert-danger').content.querySelector('.alert-danger').cloneNode(true);
+  const showAlertTextElement = showAlertTemplateElement.querySelector('.alert-danger__description');
+  showAlertTextElement.textContent = massage;
+  document.body.insertAdjacentElement('beforeend', showAlertTemplateElement);
+  setTimeout(() => {showAlertTemplateElement.remove();}, POP_UP_CLOSING_TIME);
 };
 
 /**
